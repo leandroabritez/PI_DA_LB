@@ -31,10 +31,10 @@ El OMSV nos ha proporcionado un conjunto de datos sobre homicidios en siniestros
 
 El trabajo se realizó en base a los siguientes archivos disponibles en el repositorio:
 
-- **1_README.md**: El presente documento, que proporciona una introducción y una visión general del proyecto.
-- **2_ETL.ipynb**: Un notebook que contiene el proceso de extracción, transformación y carga de datos.
-- **3_EDA.ipynb**: Un notebook que contiene el análisis exploratorio de datos.
-- **4_PI_DA_LB.pbix**: Un archivo de Power BI que contiene el tablero interactivo desarrollado para visualizar y analizar los datos.
+- **README.md**: El presente documento, que proporciona una introducción y una visión general del proyecto.
+- **1_ETL.ipynb**: Un notebook que contiene el proceso de extracción, transformación y carga de datos.
+- **2_EDA.ipynb**: Un notebook que contiene el análisis exploratorio de datos.
+- **3_PI_DA_LB.pbix**: Un archivo de Power BI que contiene el tablero interactivo desarrollado para visualizar y analizar los datos.
 
 ## Objetivos
 
