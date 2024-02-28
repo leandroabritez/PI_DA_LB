@@ -46,6 +46,8 @@ El requerimiento solicita la entrega de un documento explicativo del análisis e
 
 ## Desarrollo del Trabajo
 
+Para los procesos de análisis de datos, se utilizó el software Python con las bibliotecas pandas, matplotlib y seaborn. Esta elección se fundamenta en la versatilidad y eficacia de pandas para la manipulación y transformación de datos, así como en la capacidad de matplotlib y seaborn para visualizar los datos de manera clara y efectiva. Con estas herramientas, fue posible realizar tareas de ETL (Extract, Transform, Load) y EDA (Exploratory Data Analysis) de manera eficiente y flexible. Los gráficos generados con matplotlib y seaborn no solo facilitaron el análisis exploratorio, sino que también sirvieron como base para el diseño de un dashboard intuitivo y visualmente atractivo, lo que permitió comunicar los hallazgos de manera efectiva a los usuarios finales.
+
 ### Extracción, Transformación y Carga (ETL)
 
 En el proceso de Extracción, Transformación y Carga (ETL), se llevaron a cabo las siguientes acciones:
@@ -98,14 +100,14 @@ Luego de completar el proceso de Extracción, Transformación y Carga (ETL), se 
 
     * Se verificó la variación porcentual de los campos MES, DÍA y HORA en relación a su media. Dado los resultados, se agruparon los horarios según su secuencia y resultado para establecer cuatro grupos de franjas horarias: Mañana (05:00 - 10:00), Mediodía (11:00 - 16:00), Tarde (17:00 - 22:00) y Noche (23:00 - 04:00). Se aprecia que la mayor cantidad de accidentes se da en el período de 'Mañana' para todos los años estudiados.
 
-    ![corr](_src/assets/HH_agrupadas.png)
+    ![HHag](_src/assets/HH_agrupadas.png)
 
     * Se analizó un mapa de calor entre las variables hora por día y días de la semana, con resultados de distribución uniforme. 
     * Se realizan segmentaciones por semestre. Los segundos semestres hasta el año 2018 se concentraban aumentos de eventos, y que para el año 2019 y 2021, ambos segundos semestre registran dimuniciones en relación a su antecesor. 
 
-    ![corr](_src/assets/Victimas_año.png)
+    ![vic-año](_src/assets/Victimas_año.png)
 
-    ![corr](_src/assets/Vic_1ery2do.png)
+    ![vic-sem](_src/assets/Vic_1ery2do.png)
     
     Se observa una notable disminución en el número de víctimas para el año 2019 en comparación con los años anteriores, posiblemente debido a las políticas adoptadas por la Ciudad, como el 'Plan de Seguridad Vial de la Ciudad 2016-2019'. En el año 2020, también se observa una disminución respecto al año anterior, posiblemente influenciada por el inicio de la pandemia. Para el año 2021, se registra un aumento en el número de eventos, aunque la cifra final sigue estando por debajo de la obtenida en el año 2019.
 
@@ -122,11 +124,11 @@ Luego de completar el proceso de Extracción, Transformación y Carga (ETL), se 
 
     El mayor número de eventos se agrupan en calles tipo AVENIDA y GRAL. PAZ (Que también es una avenida), representando entre ambas el 71,2 % del total. 
 
-    ![corr](_src/assets/vic_calle.png)
+    ![vic-calle](_src/assets/vic_calle.png)
 
     En el análisis de las calles en particular con mayor cantidad de accidentes, GRAL. PAZ es la de mayor frecuencia con más del 30% de los casos, seguida por Av. Rivadavia y Av. Del Libertador. 
 
-    ![corr](_src/assets/vic_calle2.png)
+    ![vic-calle2](_src/assets/vic_calle2.png)
 
 
 6.  **Estudio de las Víctimas en Relación a sus Características**
@@ -147,7 +149,7 @@ Luego de completar el proceso de Extracción, Transformación y Carga (ETL), se 
     
     Además, se identificó una disminución importante en la concentración de eventos por edad para el sexo femenino. El género femenino representa el **23.3 %** de las víctimas totales.
 
-    ![corr](_src/assets/edad_sexo.png)
+    ![edad-sexo](_src/assets/edad_sexo.png)
 
 7.  **Análisis de accidentes mortales de motociclistas**
 
@@ -163,7 +165,7 @@ Luego de completar el proceso de Extracción, Transformación y Carga (ETL), se 
 
     Los resultados arrojaron que la distribución de víctimas motociclistas en relación a las variables temporales, por género y edad, sigue la misma tendencia que para el acumulado de víctimas.
 
-    ![corr](_src/assets/moto_edad_vic.png)
+    ![moto-edad-vic](_src/assets/moto_edad_vic.png)
 
     #### Distribución por Tipo de Calle y Calles Específicas
 
@@ -181,9 +183,26 @@ Luego de completar el proceso de Extracción, Transformación y Carga (ETL), se 
     
     Un valor destacado es el caso de objetos fijos, que para el año 2021 es el tipo que más acumula. Este tipo de accidente se define como la colisión contra objetos inmóviles fijados de manera permanente o semipermanente (columna, árbol, semáforo, etc.) o pérdidas de equilibrio de vehículos de dos ruedas que desencadenen la caída de sus ocupantes.
 
-    ![corr](_src/assets/moto_acus_año.png)
+    ![moto-acus-año](_src/assets/moto_acus_año.png)
 
+8.  **Análisis de accidentes mortales en peatones-pasajeros**
 
+    Se lleva a cabo el estudio del subgrupo de tipo de VICTIMA=PEATON para cuando el ACUSADO es PASAJERO, dado que es llamativo la cantidad de victimas para este grupo específico. 
+    
+    #### Distribución por Tipo de Calle y Calles Específicas
+
+    Se verificó que el tipo de calle las AVENIDAS agrupan 82 % de los casos, siendo la Av GRAL PAZ solamente el 1.9% a diferencia de la tendencia general para el total de victimas. Al realizar el estudio el cálculo inversamente, se ve que la distribución para las AVENIDAS , son los PEATONES los de mayor incedencia. 
+
+    ![moto-acus-año](_src/assets/aven_pea.png)
+
+    #### Estudio sobre Acusados en Función de los Años y el género
+
+    Se estudio la tendencia para este subgrupo en relación a las edades y el género. 
+    
+    A diferencia del conjunto total de vicitimas, se aprecia una concentración entre los años 50 y 80. Se destaca, que en el género FEMENINO, la acumlación es preponderante para las mayores de 60 años.
+
+    ![moto-acus-año](_src/assets/edad_sexo_pea.png)
+        
     
 ## Desarrollo de indicadores clave de rendimiento
 
@@ -193,7 +212,7 @@ Reducir en un 10% la tasa de homicidios en siniestros viales de los últimos sei
 
 Definimos a la tasa de homicidios en siniestros viales como el número de víctimas fatales en accidentes de tránsito por cada 100,000 habitantes en un área geográfica durante un período de tiempo específico. Su fórmula es: (Número de homicidios en siniestros viales / Población total) * 100,000
 
-![corr](_src/assets/KPI1.png)
+![KPI](_src/assets/KPI1.png)
 
 
 Al comparar de manera intersemestral, se observa que la suma del segundo semestre 2020_2 y el primer semestre 2021 acumulan un aumento del 77% (61.29% + 10%) en relación al periodo de 2020.
@@ -209,14 +228,124 @@ Reducir en un 7% la cantidad de accidentes mortales de motociclistas en el últi
 Definimos a la cantidad de accidentes mortales de motociclistas en siniestros viales como el número absoluto de accidentes fatales en los que estuvieron involucradas víctimas que viajaban en moto en un determinado periodo temporal. Su fórmula para medir la evolución de los accidentes mortales con víctimas en moto es: (Número de accidentes mortales con víctimas en moto en el año anterior - Número de accidentes mortales con víctimas en moto en el año actual) / (Número de accidentes mortales con víctimas en moto en el año anterior) * 100
 
     
-![corr](_src/assets/KPI2.png)
+![KPI](_src/assets/KPI2.png)
 
 Al analizar el gráfico resultante, se observa que si bien el indicador es de aceptación en tres de los cinco años estudiados, se destaca que en el año 2021 la tasa de cambio da un valor muy por debajo del porcentaje esperado. 
 
 Se presupone que esto se debe a los eventos muy bajos durante el año 2020 con pandemia, ya que al analizar los valores anuales, el año 2021 sigue en reducción de cantidad de victimas sobre el valor alcanzado en 2019, como vemos en el siguiente gráfico. 
 
-![corr](_src/assets/moto_año.png)
+![KPI](_src/assets/moto_año.png)
 
 Se realiza un análisis excluyendo los resultados del año 2020 para observar la tendencia, dando resultados más optimistas. Sólo en el año 2018 no se cumple con la meta, aunque la reducción de victimas en el transcurrir del tiempo parece seguir en baja.
 
-![corr](_src/assets/KPI2_sin_2020.png)
+![KPI](_src/assets/KPI2_sin_2020.png)
+
+
+### 3. KPI Siniestros peatón-pasajero
+
+Dadas las observaciones en relación al tipo de victima y acusado, es que se decide aportar para el estudio del informe este indicador clave. 
+
+Se define a este subgrupo como "Personas lesionadas que se encuentran dentro, descendiendo o ascendiendo de las unidades de autotrasporte público de pasajeros/as y ómnibus de larga distancia".
+
+---
+
+Reducir en un 10% la cantidad de siniestros de **peatones** con responsabilidad presunta de **pasajeros**, en el último semestre, en CABA, respecto al semestre anterior.
+
+Definimos a la cantidad de accidentes mortales de Peatones-Pasajeros en siniestros viales como el número absoluto de accidentes fatales en los que estuvieron involucradas víctimas del tipo **peatón** para aquellos casos donde se presume en la acusación una responsabilidad por parte del **pasajero** en un determinado periodo temporal. Su fórmula para medir la evolución de los accidentes mortales es: (Número de accidentes mortales de víctimas Peatones-Pasajeros en el semestre anterior - Número de accidentes mortales de víctimas Peatones-Pasajeros en el semestre actual) / (Número de accidentes mortales de víctimas Peatones-Pasajeros en el semestre anterior) * 100
+
+![KPI](_src/assets/KPI_3.png)
+
+
+Aunque el KPI se evalúa semestralmente, siendo aceptado en 6 de los 11 períodos, es importante señalar que los semestres en los que no se alcanza el objetivo representan las variaciones porcentuales más significativas respecto al semestre anterior. Esto se debe principalmente a que en esos semestres anteriores se observaron importantes reducciones en el número de víctimas.
+
+Según el análisis anual, se evidencia una disminución de casos a partir de 2018. Resulta notable que el número de víctimas se haya mantenido prácticamente constante entre los años 2019 y 2021, a pesar de la pandemia que ocurrió en 2020, período en el que en otros estudios se registró una reducción general de víctimas.
+
+![KPI](_src/assets/pea_pas_año.png)
+
+Al examinar cuantitativamente los semestres, se observa que el segundo período de 2021 finaliza con un valor que se encuentra entre los 3 más bajos registrados, incluyendo el primer período de 2020 que fue afectado por la pandemia.
+
+![KPI](_src/assets/pea_pas_sem.png)
+
+# Elaboración Dashboard 
+
+Para la presentación fue elegido el software **PowerBI**, que ofrece una interfaz intuitiva y fácil de usar que permite a los usuarios, incluso sin experiencia en programación, realizar análisis de datos complejos y crear visualizaciones impactantes. Proporciona una solución completa y poderosa para el análisis de datos y la creación de informes
+
+A continuación se detallen los procesos más relevantes para la creación del informe:
+
+* Importación de datos: Se importaron los datos relevantes en Power BI desde las fuentes necesarias.
+
+* Transformación de datos: Se llevaron a cabo varias transformaciones de datos utilizando Power Query Editor para limpiar, dar formato y preparar los datos para su análisis.
+
+* Modelado de datos: Se creó un modelo de datos en Power BI que reflejaba la estructura de los datos y las relaciones entre las diferentes tablas.
+
+* Cálculo de medidas: Se crearon medidas utilizando el lenguaje de expresión de datos (DAX) para calcular métricas y KPIs específicos según los requisitos del usuario.
+
+* Creación de visualizaciones: Se diseñaron diferentes visualizaciones, como gráficos de barras, gráficos circulares, tablas y otros elementos visuales, para representar los datos de manera efectiva y comprensible.
+
+* Interacción y filtros: Se configuraron interacciones entre las visualizaciones y se aplicaron filtros para permitir a los usuarios explorar y analizar los datos de manera dinámica.
+
+* Diseño del tablero: Se diseñó y personalizó un tablero en Power BI que presentaba las visualizaciones de manera organizada y atractiva, con el objetivo de comunicar la información de manera clara y efectiva.
+
+El informe se encuentra disponible dentro del **Github** actual, y además, se disponibilizó para su consulta online en el siguiente enlace: 
+
+[Power BI: PI_DA_LB](https://app.powerbi.com/singleSignOn?ctid=1a751f20-baa9-46f3-8ff3-0b96608bb801&pbi_source=linkShare&ru=https%3A%2F%2Fapp.powerbi.com%2Fgroups%2Fme%2Freports%2F0adffc1e-d081-4d18-9d84-098761cbb162%3Fctid%3D1a751f20-baa9-46f3-8ff3-0b96608bb801%26pbi_source%3DlinkShare%26noSignUpCheck%3D1)
+
+# Conclusiones
+
+Durante el desarrollo de este estudio de análisis de datos sobre siniestros viales en la Ciudad Autónoma de Buenos Aires (CABA), se han identificado diversas tendencias, patrones y relaciones que arrojan luz sobre la situación actual de la seguridad vial en la ciudad. A partir de los datos recopilados y analizados, podemos extraer las siguientes conclusiones:
+
+1. **Tendencia a la baja en la tasa de homicidios en siniestros viales:**
+
+    *   Se observa una tendencia general hacia la reducción de la tasa de homicidios en siniestros viales en la ciudad, especialmente a partir del año 2019.
+    *   A pesar de fluctuaciones intersemestrales y eventos disruptivos como la pandemia de COVID-19 en 2020, se evidencia un progreso continuo en la reducción de la mortalidad en accidentes de tránsito.
+
+2.  **Disminución constante de accidentes mortales de motociclistas:**
+
+    *   A lo largo de los años estudiados, se ha registrado una disminución constante en la cantidad de accidentes mortales que involucran a motociclistas.
+    *   Aunque el año 2020, marcado por la pandemia, presenta cifras atípicas, al excluir este periodo se evidencia una tendencia a la baja en la incidencia de estos siniestros.
+    *   Aunque las motocicletas representan el tipo de accidentado con mayor cantidad de fallecimientos, con el 43.8% del total de casos, estos solo están identificados como responsables de los accidentes en un 8.4%. Esto requerirá un enfoque específico en la seguridad de los motociclistas y la prevención de accidentes que involucren este tipo de vehículos.
+
+3.  **Variaciones en la seguridad de los peatones en relación a pasajeros de transporte público:**
+
+    *   La relación entre peatones y pasajeros de transporte público en siniestros viales muestra variaciones significativas semestralmente.
+    *   A pesar de mantenerse relativamente constante entre los años 2019 y 2021, se observa una disminución en la cantidad de casos durante el segundo semestre de 2021, destacando su impacto positivo.
+    *   Si bien las avenidas son el tipo de calle con mayor incidencia de eventos. Al analizar específicamente su distribución por vicitma, se destaca que son los peatones quienes experimentan la mayor incidencia de accidentes en este tipo de vías.
+    *   El alto número de víctimas peatonales, especialmente en casos en los que se presume la responsabilidad de los pasajeros de transporte público, requiere políticas específicas para abordar este problema, que no depende directamente del tránsito vehicular.
+
+4.  **Importancia de acciones integrales y diversificadas:**
+
+    *   Es crucial implementar medidas diversas y adaptadas a las distintas situaciones identificadas. Por ejemplo, si bien la mayoría de los accidentes ocurren en la mañana para el conjunto total de víctimas, para los peatones, la mayor cantidad de siniestros se da en los horarios de mediodía a tarde.
+    *   Aunque los objetos fijos representan una proporción menor de los responsables de los accidentes en el conjunto de eventos, su incidencia ha experimentado un notable aumento en el año 2021, destacándose como el tipo más frecuente de accidentes, para las víctimas motociclistas.
+    *   En cuanto a la distribución por edad, se observó una concentración entre 20 y 40 años, pero al analizar la distribución por género, se identificó una disminución importante en la concentración de eventos por edad para el sexo femenino. En contrapartida, para el caso de peatones, se destaca que en el género femenino, la acumlación es preponderante para las mayores de 60 años. Este hallazgo subraya la necesidad de considerar las diferencias demográficas al diseñar estrategias de prevención y seguridad vial.
+    *   Esto resalta la necesidad de abordar la seguridad vial desde diferentes ángulos, incluyendo la educación vial, el cumplimiento de las normas de tráfico, la infraestructura segura de carreteras y calles, así como la promoción de vehículos más seguros.
+
+Estas conclusiones subrayan la importancia del análisis de datos en la formulación de estrategias y políticas de seguridad vial. Además, resaltan la necesidad de seguir monitoreando y evaluando constantemente la efectividad de estas medidas para garantizar la seguridad de los ciudadanos y reducir el impacto de los siniestros viales en la Ciudad Autónoma de Buenos Aires.
+
+## Recomendaciones
+
+Basado en los hallazgos y análisis realizados en este informe, se proponen las siguientes recomendaciones para abordar de manera efectiva el problema de los siniestros viales en la Ciudad Autónoma de Buenos Aires (CABA):
+
+1. **Implementación de medidas de seguridad específicas para motociclistas:** Dado que las motocicletas representan una proporción significativa de las víctimas de siniestros viales y tienen una baja incidencia como responsables de los accidentes, es fundamental desarrollar e implementar medidas de seguridad dirigidas específicamente a este grupo de usuarios de la vía pública. Esto puede incluir campañas de concientización, programas de capacitación en seguridad vial y mejoras en la infraestructura de las calles para hacerlas más seguras para los motociclistas.
+
+2. **Enfoque en la prevención de colisiones con objetos fijos:** Considerando el aumento significativo de los accidentes causados por colisiones con objetos fijos, es necesario implementar medidas preventivas para reducir este tipo de incidentes. Esto podría implicar la identificación y corrección de puntos críticos en la infraestructura vial, así como campañas de concientización dirigidas a los conductores sobre los riesgos asociados con este tipo de colisiones.
+
+3. **Políticas dirigidas al transporte público para reducir accidentes peatonales:** Dado el alto número de víctimas peatonales involucradas en accidentes de tránsito, especialmente en situaciones donde se presume responsabilidad por parte de los pasajeros del transporte público, es fundamental implementar políticas específicas orientadas a mejorar la seguridad en el transporte público. Esto puede incluir medidas como la capacitación de conductores, campañas de sensibilización para pasajeros y mejoras en la infraestructura de las paradas de transporte público para reducir los riesgos de accidentes peatonales.
+
+4. **Mejora de la seguridad vial en avenidas:** Dado que las avenidas son las vías con mayor incidencia de accidentes, es necesario implementar medidas para mejorar la seguridad vial en estas áreas. Esto podría incluir la instalación de dispositivos de control de velocidad, la mejora de la señalización vial, la implementación de pasos peatonales seguros y la reducción de la velocidad máxima permitida en ciertas zonas.
+
+5. **Monitoreo continuo y evaluación de políticas:** Es fundamental establecer un sistema de monitoreo continuo y evaluación de las políticas implementadas para abordar los siniestros viales en CABA. Esto permitirá identificar qué medidas son efectivas y cuáles requieren ajustes, así como detectar tendencias emergentes en la incidencia de accidentes y adaptar las estrategias de prevención en consecuencia.
+
+Al implementar estas recomendaciones de manera integral y coordinada, se espera poder reducir de manera significativa la incidencia de siniestros viales en la Ciudad Autónoma de Buenos Aires y mejorar la seguridad vial para todos los usuarios de la vía pública.
+
+
+## Recomendaciones Adicionales
+
+Además de las recomendaciones anteriores, se sugieren las siguientes acciones complementarias para fortalecer las medidas de seguridad vial en la Ciudad Autónoma de Buenos Aires (CABA):
+
+1. **Desalentar la movilidad en horas pico:** Dado que las mañanas son el período del día con mayor incidencia de accidentes, se sugiere implementar medidas para desalentar la movilidad durante estas horas. Esto podría incluir campañas de concientización sobre la importancia de evitar desplazamientos innecesarios en horarios de alta congestión, así como incentivos para utilizar medios de transporte alternativos o trabajar de forma remota cuando sea posible.
+
+2. **Utilizar tecnología de detección de velocidad para reducir accidentes:** Se recomienda analizar la ubicación de los detectores de velocidad en la ciudad y evaluar su impacto en la reducción de accidentes de tránsito. Esto podría implicar la instalación de más dispositivos de detección de velocidad en áreas con alta incidencia de accidentes, así como el uso de sistemas de multas basados en datos estadísticos sobre la relación entre la velocidad y la frecuencia de accidentes en diferentes zonas de la ciudad.
+
+3. **Establecer tasas de accidentes por zona:** Para obtener una visión más completa de la seguridad vial en la ciudad, se sugiere recopilar estadísticas sobre el caudal de vehículos por zona y calcular tasas de accidentes por comuna o barrio. Esto permitirá identificar áreas con una alta incidencia de accidentes en relación con el volumen de tráfico y priorizar la asignación de recursos para mejorar la seguridad vial en esas zonas específicas.
+
+Al incorporar estas recomendaciones adicionales a las estrategias existentes, se espera fortalecer aún más los esfuerzos para prevenir y reducir los siniestros viales en la Ciudad Autónoma de Buenos Aires, garantizando así un entorno más seguro para todos los ciudadanos.
